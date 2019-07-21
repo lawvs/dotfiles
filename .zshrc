@@ -112,6 +112,14 @@ case $(uname -a) in
    *Microsoft*) unsetopt BG_NICE ;;
 esac
 
+# change ls colors
+LS_COLORS="ow=01;36;40" && export LS_COLORS
+
+# make cd use the ls colors
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
+
 cd ~
 screenfetch
 
