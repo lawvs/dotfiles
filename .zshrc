@@ -109,16 +109,23 @@ source $ZSH/oh-my-zsh.sh
 # fix wsl z
 # @see https://github.com/rupa/z/issues/230
 case $(uname -a) in
-   *Microsoft*) unsetopt BG_NICE ;;
+*Microsoft*)
+  unsetopt BG_NICE
+  ;;
 esac
 
-# change ls colors
-LS_COLORS="ow=01;36;40" && export LS_COLORS
+# fix wsl cd ls colors
+case $(uname -a) in
+*Microsoft*)
+  # change ls colors
+  LS_COLORS="ow=01;36;40" && export LS_COLORS
 
-# make cd use the ls colors
-zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
-autoload -Uz compinit
-compinit
+  # make cd use the ls colors
+  zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+  autoload -Uz compinit
+  compinit
+  ;;
+esac
 
 # fix npm install -g
 # @see https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
