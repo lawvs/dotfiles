@@ -120,6 +120,11 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit
 
+# fix npm install -g
+# @see https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+NPM_CONFIG_PREFIX=~/.npm-global
+export PATH=~/.npm-global/bin:$PATH
+
 cd ~
 screenfetch
 
