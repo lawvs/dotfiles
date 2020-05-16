@@ -137,6 +137,9 @@ module.exports = {
     webGLRenderer: true,
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+
+    // The number of rows to be persisted in terminal buffer for scrolling
+    scrollback: 10000,
   },
 
   // a list of plugins to fetch and install from npm
@@ -157,5 +160,6 @@ module.exports = {
   keymaps: {
     // Example
     // 'window:devtools': 'cmd+alt+o',
+    "editor:paste": "ctrl+v",  
   },
 };
