@@ -136,10 +136,25 @@ case $(uname -a) in
   ;;
 esac
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+
 # fix npm install -g
 # @see https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
-NPM_CONFIG_PREFIX=~/.npm-global
-export PATH=~/.npm-global/bin:$PATH
+# NPM_CONFIG_PREFIX=~/.npm-global
+# export PATH=~/.npm-global/bin:$PATH
+
+
+# set proxy
+# get host ip
+export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
+export https_proxy="http://${hostip}:7890"
+export http_proxy="http://${hostip}:7890"
+export all_proxy="socks5://${hostip}:7890"
+
+eval $(thefuck --alias)
 
 cd ~
 screenfetch
