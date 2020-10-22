@@ -18,4 +18,3 @@ set mouse=a
 set t_Co=256
 
 set wildmenu wildmode=list:full
-
