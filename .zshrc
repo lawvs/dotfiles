@@ -1,7 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# fix tmux 
+# Debug
+# zmodload zsh/zprof
+
+# Fix tmux
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
@@ -77,7 +80,8 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_job
 plugins=(
   z
   git
-  zsh-syntax-highlighting
+  # zsh-syntax-highlighting
+  fast-syntax-highlighting
   zsh-autosuggestions
 )
 
