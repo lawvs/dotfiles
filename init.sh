@@ -23,7 +23,7 @@ install-linux-packages() {
   echo ""
   echo "-----------------------------------------------------------"
   apt update
-  apt install -y git vim build-essential screenfetch
+  apt install -y git vim build-essential neofetch
   apt install -y python3-dev python3-pip python3-setuptools
   apt install -y curl netcat
   # sudo vim /etc/proxychains.conf

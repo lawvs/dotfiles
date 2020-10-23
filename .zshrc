@@ -156,4 +156,4 @@ export all_proxy="socks5://${hostip}:7890"
 eval $(thefuck --alias)
 
 cd ~
-screenfetch
+neofetch
