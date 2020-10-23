@@ -83,6 +83,8 @@ plugins=(
   # zsh-syntax-highlighting
   fast-syntax-highlighting
   zsh-autosuggestions
+  # https://github.com/SukkaW/zsh-proxy
+  zsh-proxy
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -146,12 +148,6 @@ export NVM_DIR="$HOME/.nvm"
 # export PATH=~/.npm-global/bin:$PATH
 
 
-# set proxy
-# get host ip
-export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
-export https_proxy="http://${hostip}:7890"
-export http_proxy="http://${hostip}:7890"
-export all_proxy="socks5://${hostip}:7890"
 
 eval $(thefuck --alias)
 
