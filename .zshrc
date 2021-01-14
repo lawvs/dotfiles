@@ -147,8 +147,6 @@ export NVM_DIR="$HOME/.nvm"
 # NPM_CONFIG_PREFIX=~/.npm-global
 # export PATH=~/.npm-global/bin:$PATH
 
-
-
 eval $(thefuck --alias)
 
 cd ~
