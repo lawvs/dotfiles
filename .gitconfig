@@ -1,10 +1,16 @@
 [core]
   editor = vim
+  quotepath = false
 [user]
   email = 18554747+lawvs@users.noreply.github.com
   name = lawvs
 [pager]
-	branch = false
+  branch = false
 [pull]
-	rebase = true
+  ff = on
+[push]
+  default = simple
+[rebase]
+  autoStash = true
+  autoSquash = true
 
