@@ -9,3 +9,8 @@ cd dotfiles
 sudo ./init.sh
 ./install.sh
 ```
+
+## References
+
+- [frantic1048/Vanilla](https://github.com/frantic1048/Vanilla)
+
