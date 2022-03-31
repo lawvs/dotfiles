@@ -58,7 +58,6 @@
   "errorLens.exclude": ["Unknown word"],
   "editor.bracketPairColorization.enabled": true,
   "editor.suggest.preview": true,
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.inlayHints.parameterNames.enabled": "all",
   "javascript.inlayHints.parameterTypes.enabled": true,
   "javascript.inlayHints.variableTypes.enabled": true,
@@ -72,5 +71,7 @@
     "plaintext": false,
     "markdown": true
   },
-  "window.nativeTabs": true
+  "window.nativeTabs": true,
+  "terminal.integrated.inheritEnv": false,
+  "git.pruneOnFetch": true
 }
