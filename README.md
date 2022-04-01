@@ -1,6 +1,6 @@
 # Dotfiles
 
-## Usage
+## Usages
 
 ```sh
 sudo apt install -y git
@@ -10,7 +10,13 @@ sudo ./init.sh
 ./install.sh
 ```
 
+Set and use Zsh as default shell
+
+```sh
+chsh -s $(which zsh)
+```
+
 ## References
 
 - [frantic1048/Vanilla](https://github.com/frantic1048/Vanilla)
-
+- [powerline/fonts](https://github.com/powerline/fonts)
