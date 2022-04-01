@@ -52,17 +52,17 @@ install-nodejs() {
 
   install-node() {
     echo "-----------------------------------------------------------"
-    echo "* Installing NodeJS 12..."
+    echo "* Installing NodeJS 17..."
     echo "-----------------------------------------------------------"
 
-    nvm install 12
+    nvm install 17
 
     echo "-----------------------------------------------------------"
-    echo "* Set NodeJS 12 as default..."
+    echo "* Set NodeJS 17 as default..."
     echo "-----------------------------------------------------------"
 
-    nvm use v12
-    # nvm alias default v12
+    nvm use v17
+    # nvm alias default v17
 
     echo "-----------------------------------------------------------"
     echo -n "* NodeJS Version: "
