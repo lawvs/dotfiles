@@ -83,8 +83,6 @@ plugins=(
   # zsh-syntax-highlighting
   fast-syntax-highlighting
   zsh-autosuggestions
-  # https://github.com/SukkaW/zsh-proxy
-  zsh-proxy
 )
 
 source $ZSH/oh-my-zsh.sh
