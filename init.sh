@@ -91,14 +91,6 @@ install-nodejs() {
   install-yarn
 }
 
-thefuck() {
-  echo "==========================================================="
-  echo "                      Install thefuck                      "
-  echo "-----------------------------------------------------------"
-
-  sudo pip3 install thefuck
-}
-
 upgrade-packages() {
   echo "==========================================================="
   echo "                      Upgrade packages                     "
@@ -111,5 +103,4 @@ upgrade-packages() {
 
 install-linux-packages
 install-nodejs
-thefuck
 upgrade-packages
