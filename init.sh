@@ -33,6 +33,16 @@ install-linux-packages() {
 
 }
 
+clone-repo() {
+    echo "-----------------------------------------------------------"
+    echo "* Cloning dotfiles Repo from GitHub.com"
+    echo "-----------------------------------------------------------"
+
+    git clone https://github.com/lawvs/dotfiles.git
+
+    cd ./dotfiles
+}
+
 install-nodejs() {
   install-nvm() {
     echo "-----------------------------------------------------------"
@@ -102,5 +112,6 @@ upgrade-packages() {
 }
 
 install-linux-packages
+clone-repo
 install-nodejs
 upgrade-packages
