@@ -11,4 +11,3 @@ echo 'Host github.com
 read -s -k '?Press enter to testing your SSH connection.'
 
 ssh -T git@github.com
-
