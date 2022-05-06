@@ -81,7 +81,7 @@ plugins=(
   z
   git
   # zsh-syntax-highlighting
-  fast-syntax-highlighting
+  F-Sy-H
   zsh-autosuggestions
 )
 
@@ -155,4 +155,3 @@ fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 neofetch
-
