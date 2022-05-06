@@ -13,9 +13,6 @@ echo '[finished] vim'
 
 ln -sf $SCRIPT_DIR/.gitconfig ~/.gitconfig
 
-# zsh
-ln -sf $SCRIPT_DIR/.zshrc ~/.zshrc
-
 # install oh-my-zsh
 curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
 
@@ -26,5 +23,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # theme
 git clone https://github.com/bhilburn/powerlevel9k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel9k
+
+# zsh
+ln -sf $SCRIPT_DIR/.zshrc ~/.zshrc
 
 echo '[finished] zsh'
