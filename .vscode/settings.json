@@ -73,5 +73,6 @@
   },
   "window.nativeTabs": true,
   "terminal.integrated.inheritEnv": false,
-  "git.pruneOnFetch": true
+  "git.pruneOnFetch": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true
 }
