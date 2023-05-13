@@ -6,6 +6,7 @@ echo 'Host github.com
   Hostname github.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_rsa_github
+# ProxyCommand nc -x localhost:7890 %h %p
 ' >> $HOME/.ssh/config
 
 read -s -k '?Press enter to testing your SSH connection.'

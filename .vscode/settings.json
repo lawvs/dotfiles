@@ -74,5 +74,9 @@
   "window.nativeTabs": true,
   "terminal.integrated.inheritEnv": false,
   "git.pruneOnFetch": true,
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true
+  "editor.stickyScroll.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.size": "fit",
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
 }
