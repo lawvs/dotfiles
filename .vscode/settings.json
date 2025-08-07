@@ -55,7 +55,7 @@
   ],
   "git.confirmSync": false,
   "git.rebaseWhenSync": true,
-  "errorLens.exclude": ["Unknown word"],
+  "errorLens.excludeByMessage": ["Unknown word"],
   "editor.bracketPairColorization.enabled": true,
   "editor.suggest.preview": true,
   "javascript.inlayHints.parameterNames.enabled": "all",
