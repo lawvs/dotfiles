@@ -9,6 +9,9 @@ echo 'Host github.com
 # ProxyCommand nc -x localhost:7890 %h %p
 ' >> $HOME/.ssh/config
 
+cat $HOME/.ssh/id_rsa_github.pub
+echo '-> https://github.com/settings/ssh/new'
+
 read -s -k '?Press enter to testing your SSH connection.'
 
 ssh -T git@github.com
