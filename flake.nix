@@ -8,6 +8,11 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -15,6 +20,7 @@
       self,
       nixpkgs,
       nix-darwin,
+      home-manager,
       ...
     }:
     let
@@ -31,6 +37,7 @@
         };
 
         modules = [
+          home-manager.darwinModules.home-manager
           ./nix/darwin/hosts/macbook
         ];
       };
