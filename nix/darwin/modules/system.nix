@@ -13,5 +13,7 @@
       ShowPathbar = true;
       ShowStatusBar = true;
     };
+
+    menuExtraClock.Show24Hour = true;
   };
 }
