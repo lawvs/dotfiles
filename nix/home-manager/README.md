@@ -1,14 +1,16 @@
 # Home Manager
 
-This directory is intentionally empty for the first nix-darwin version.
+This directory contains user-level configuration managed by Home Manager.
 
-The initial setup keeps user-level dotfiles outside Home Manager so the first
-`darwin-rebuild` only needs to prove that Nix, nix-darwin, fish, starship, and
-basic CLI packages work on this Mac.
+Home Manager is wired into nix-darwin, so `darwin-rebuild switch` applies both
+system and user configuration.
 
-Good first candidates to move here later:
+Currently managed:
 
 - Git configuration
 - Fish configuration
 - Starship configuration
+
+Good later candidates:
+
 - Editor configuration

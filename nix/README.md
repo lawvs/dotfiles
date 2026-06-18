@@ -8,7 +8,7 @@ Current choices:
 - nix-darwin with flakes
 - fish
 - starship
-- no Home Manager yet
+- Home Manager for user-level git, fish, and starship configuration
 - no Homebrew yet
 
 ## Structure
@@ -25,6 +25,10 @@ nix/
 │       ├── shell.nix
 │       └── system.nix
 └── home-manager/
+    ├── default.nix
+    ├── fish.nix
+    ├── git.nix
+    ├── starship.nix
     └── README.md
 ```
 
@@ -73,6 +77,22 @@ chsh -s /run/current-system/sw/bin/fish
 ```
 
 Open a new terminal to start fish with starship.
+
+## Home Manager
+
+Home Manager is applied through nix-darwin and manages user-level git, fish, and
+starship configuration.
+
+If activation reports an existing file conflict, move the existing user config
+aside and retry. For example:
+
+```sh
+mv ~/.config/fish/config.fish ~/.config/fish/config.fish.before-home-manager
+```
+
+Home Manager writes Git configuration to `~/.config/git/config`. If
+`~/.gitconfig` also exists, Git may read both global config files, so keep only
+the file you intend to use.
 
 ## Notes
 

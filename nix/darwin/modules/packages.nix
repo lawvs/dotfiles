@@ -11,7 +11,6 @@
     neovim
     nixfmt
     ripgrep
-    starship
     tree
     vim
     wget
