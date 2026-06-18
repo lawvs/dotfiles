@@ -16,11 +16,17 @@ sudo ./init.sh
 ./install.sh
 ```
 
-Set and use Zsh as default shell
+Legacy: set and use Zsh as default shell
 
 ```sh
 chsh -s $(which zsh)
 ```
+
+## macOS with nix-darwin
+
+This repository contains a nix-darwin setup under `nix/`.
+
+See [nix/README.md](nix/README.md).
 
 ## References
 
