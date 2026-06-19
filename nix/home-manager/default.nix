@@ -3,6 +3,7 @@
   imports = [
     ./fish.nix
     ./git.nix
+    ./node.nix
     ./starship.nix
   ];
 

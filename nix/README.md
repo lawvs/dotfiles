@@ -9,6 +9,7 @@ Current choices:
 - fish
 - starship
 - Home Manager for user-level git, fish, and starship configuration
+- Home Manager for global daily-use Node.js and pnpm
 - no Homebrew yet
 
 ## Structure
@@ -28,6 +29,7 @@ nix/
     ├── default.nix
     ├── fish.nix
     ├── git.nix
+    ├── node.nix
     ├── starship.nix
     └── README.md
 ```
@@ -80,8 +82,8 @@ Open a new terminal to start fish with starship.
 
 ## Home Manager
 
-Home Manager is applied through nix-darwin and manages user-level git, fish, and
-starship configuration.
+Home Manager is applied through nix-darwin and manages user-level git, fish,
+starship, and global daily-use Node.js tooling.
 
 If activation reports an existing file conflict, move the existing user config
 aside and retry. For example:

@@ -9,6 +9,7 @@ Currently managed:
 
 - Git configuration
 - Fish configuration
+- Node.js and pnpm
 - Starship configuration
 
 Good later candidates:
