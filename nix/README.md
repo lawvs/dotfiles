@@ -10,7 +10,7 @@ Current choices:
 - starship
 - Home Manager for user-level git, fish, and starship configuration
 - Home Manager for global daily-use Node.js and pnpm
-- no Homebrew yet
+- nix-homebrew with Homebrew casks for GUI apps
 
 ## Structure
 
@@ -22,6 +22,7 @@ nix/
 │   │       └── default.nix
 │   └── modules/
 │       ├── core.nix
+│       ├── homebrew.nix
 │       ├── packages.nix
 │       ├── shell.nix
 │       └── system.nix
@@ -95,6 +96,23 @@ mv ~/.config/fish/config.fish ~/.config/fish/config.fish.before-home-manager
 Home Manager writes Git configuration to `~/.config/git/config`. If
 `~/.gitconfig` also exists, Git may read both global config files, so keep only
 the file you intend to use.
+
+## Homebrew
+
+Homebrew is installed through nix-homebrew and GUI apps are managed through the
+nix-darwin Homebrew module.
+
+Currently managed casks:
+
+- Google Chrome
+- Visual Studio Code
+- Telegram
+- IINA
+- Raycast
+- Stats
+
+Homebrew cleanup is set to `none`, so activation will not remove manually
+installed Homebrew packages.
 
 ## Notes
 
