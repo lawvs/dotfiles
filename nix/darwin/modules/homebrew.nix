@@ -32,6 +32,8 @@
       "iina"
       "raycast"
       "stats"
+      "codex"
+      "localsend"
     ];
   };
 }

@@ -110,6 +110,8 @@ Currently managed casks:
 - IINA
 - Raycast
 - Stats
+- Codex
+- LocalSend
 
 Homebrew cleanup is set to `none`, so activation will not remove manually
 installed Homebrew packages.
