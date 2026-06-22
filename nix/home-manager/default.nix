@@ -5,6 +5,7 @@
     ./git.nix
     ./node.nix
     ./starship.nix
+    ./vscode.nix
   ];
 
   programs.home-manager.enable = true;

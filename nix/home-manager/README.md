@@ -11,7 +11,4 @@ Currently managed:
 - Fish configuration
 - Node.js and pnpm
 - Starship configuration
-
-Good later candidates:
-
-- Editor configuration
+- VS Code settings
