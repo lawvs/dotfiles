@@ -5,6 +5,7 @@
 {
   imports = [
     ../../modules/core.nix
+    ../../modules/fonts.nix
     ../../modules/homebrew.nix
     ../../modules/home-manager.nix
     ../../modules/packages.nix

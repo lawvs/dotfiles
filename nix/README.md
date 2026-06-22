@@ -6,11 +6,10 @@ Current choices:
 
 - upstream Nix
 - nix-darwin with flakes
-- fish
-- starship
-- Home Manager for user-level git, fish, and starship configuration
-- Home Manager for global daily-use Node.js and pnpm
-- nix-homebrew with Homebrew casks for GUI apps
+- fish with starship
+- Home Manager for user-level configuration and daily CLI tooling
+- nix-homebrew for GUI apps
+- fonts managed by nix-darwin
 
 ## Structure
 
@@ -22,6 +21,7 @@ nix/
 │   │       └── default.nix
 │   └── modules/
 │       ├── core.nix
+│       ├── fonts.nix
 │       ├── homebrew.nix
 │       ├── packages.nix
 │       ├── shell.nix
@@ -81,6 +81,13 @@ chsh -s /run/current-system/sw/bin/fish
 
 Open a new terminal to start fish with starship.
 
+## Fonts
+
+Font packages are declared in `nix/darwin/modules/fonts.nix`.
+
+nix-darwin installs fonts, but terminal font preferences are still configured in
+the terminal app profile.
+
 ## Home Manager
 
 Home Manager is applied through nix-darwin and manages user-level git, fish,
@@ -100,18 +107,8 @@ the file you intend to use.
 ## Homebrew
 
 Homebrew is installed through nix-homebrew and GUI apps are managed through the
-nix-darwin Homebrew module.
-
-Currently managed casks:
-
-- Google Chrome
-- Visual Studio Code
-- Telegram
-- IINA
-- Raycast
-- Stats
-- Codex
-- LocalSend
+nix-darwin Homebrew module. Managed casks and activation policy are declared in
+`nix/darwin/modules/homebrew.nix`.
 
 Homebrew cleanup is set to `none`, so activation will not remove manually
 installed Homebrew packages.
