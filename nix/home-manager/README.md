@@ -10,5 +10,6 @@ Currently managed:
 - Git configuration
 - Fish configuration
 - Node.js and pnpm
+- Rust tooling
 - Starship configuration
 - VS Code settings

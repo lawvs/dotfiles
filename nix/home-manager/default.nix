@@ -4,6 +4,7 @@
     ./fish.nix
     ./git.nix
     ./node.nix
+    ./rust.nix
     ./starship.nix
     ./vscode.nix
   ];

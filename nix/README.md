@@ -91,7 +91,7 @@ the terminal app profile.
 ## Home Manager
 
 Home Manager is applied through nix-darwin and manages user-level git, fish,
-starship, VS Code settings, and global daily-use Node.js tooling.
+starship, VS Code settings, and global daily-use Node.js and Rust tooling.
 
 If activation reports an existing file conflict, move the existing user config
 aside and retry. For example:
