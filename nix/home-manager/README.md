@@ -9,6 +9,7 @@ Currently managed:
 
 - Git configuration
 - Fish configuration
+- Go tooling
 - Node.js and pnpm
 - Rust tooling
 - Starship configuration

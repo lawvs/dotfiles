@@ -3,6 +3,7 @@
   imports = [
     ./fish.nix
     ./git.nix
+    ./go.nix
     ./node.nix
     ./rust.nix
     ./starship.nix
