@@ -34,6 +34,7 @@
       "stats"
       "codex"
       "localsend"
+      "orbstack"
     ];
   };
 }
