@@ -25,6 +25,10 @@
       cleanup = "none";
     };
 
+    brews = [
+      "witr"
+    ];
+
     casks = [
       "google-chrome"
       "visual-studio-code"
