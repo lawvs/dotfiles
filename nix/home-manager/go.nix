@@ -4,6 +4,7 @@
     go
     gopls
     gotools
+    golangci-lint
     protobuf
   ];
 }
