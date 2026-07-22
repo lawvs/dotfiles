@@ -13,4 +13,5 @@ Currently managed:
 - Node.js and pnpm
 - Rust tooling
 - Starship configuration
+- Vim configuration
 - VS Code settings

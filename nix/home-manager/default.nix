@@ -7,6 +7,7 @@
     ./node.nix
     ./rust.nix
     ./starship.nix
+    ./vim.nix
     ./vscode.nix
   ];
 
