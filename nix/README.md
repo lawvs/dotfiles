@@ -100,7 +100,7 @@ aside and retry. For example:
 mv ~/.config/fish/config.fish ~/.config/fish/config.fish.before-home-manager
 ```
 
-Home Manager writes Git configuration to `~/.config/git/config`. If
+Home Manager links `nix/home-manager/git/config` to `~/.config/git/config`. If
 `~/.gitconfig` also exists, Git may read both global config files, so keep only
 the file you intend to use.
 
