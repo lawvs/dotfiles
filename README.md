@@ -1,35 +1,18 @@
 # Dotfiles
 
-## Usages
+Personal dotfiles and macOS setup.
 
-```sh
-curl -o- https://raw.githubusercontent.com/lawvs/dotfiles/master/init.sh | bash
-```
+## macOS
 
-or
-
-```sh
-sudo apt install -y git
-git clone https://github.com/lawvs/dotfiles.git
-cd dotfiles
-sudo ./init.sh
-./install.sh
-```
-
-Legacy: set and use Zsh as default shell
-
-```sh
-chsh -s $(which zsh)
-```
-
-## macOS with nix-darwin
-
-This repository contains a nix-darwin setup under `nix/`.
+The macOS environment is managed with Nix, nix-darwin, Home Manager, and
+nix-homebrew.
 
 See [nix/README.md](nix/README.md).
 
 ## References
 
-- [frantic1048/Vanilla](https://github.com/frantic1048/Vanilla)
-- [SukkaW/dotfiles](https://github.com/SukkaW/dotfiles)
-- [powerline/fonts](https://github.com/powerline/fonts)
+- [ryan4yin/nix-darwin-kickstarter](https://github.com/ryan4yin/nix-darwin-kickstarter)
+- [sn0wm1x/os](https://github.com/sn0wm1x/os)
+- [sn0wm1x/ur](https://github.com/sn0wm1x/ur)
+- [alissa-tung/dot-darwin](https://github.com/alissa-tung/dot-darwin)
+- [unixzii/nixos-config](https://github.com/unixzii/nixos-config)
