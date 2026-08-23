@@ -39,7 +39,7 @@
       "codex"
       "localsend"
       "orbstack"
-      "tailscale"
+      "tailscale-app"
     ];
   };
 }
