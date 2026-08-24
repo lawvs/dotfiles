@@ -10,6 +10,7 @@
     ../../modules/home-manager.nix
     ../../modules/packages.nix
     ../../modules/shell.nix
+    ../../modules/ssh.nix
     ../../modules/system.nix
   ];
 
