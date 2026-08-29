@@ -40,6 +40,7 @@
       "localsend"
       "orbstack"
       "tailscale-app"
+      "resilio-sync"
     ];
   };
 }
