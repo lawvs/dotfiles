@@ -8,7 +8,7 @@ Current choices:
 - nix-darwin with flakes
 - fish with starship
 - Home Manager for user-level configuration and daily CLI tooling
-- nix-homebrew for GUI apps
+- nix-homebrew for GUI apps and selected CLI tools
 - fonts managed by nix-darwin
 
 ## Structure
@@ -54,7 +54,7 @@ Apply the nix-darwin configuration from the repository root:
 
 ```sh
 nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurations.macbook.system
-sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbook
+sudo ./result/sw/bin/darwin-rebuild switch --flake 'path:.#macbook'
 ```
 
 If nix-darwin reports unexpected files in `/etc`, move the existing files aside
@@ -67,11 +67,27 @@ sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
 
 ## Update
 
-After the first successful switch, update the system from the repository root:
+Update dependencies and apply the configuration from the repository root:
 
 ```sh
-sudo darwin-rebuild switch --flake .#macbook
+nix flake update
+sudo darwin-rebuild switch --flake 'path:.#macbook'
 ```
+
+To limit dependency updates to Homebrew and its package definitions (including
+Codex), replace `nix flake update` with:
+
+```sh
+nix flake update nix-homebrew homebrew-core homebrew-cask
+```
+
+Update these three inputs together to keep Homebrew compatible with its package
+definitions. The switch installs and upgrades declared Homebrew packages, not
+just Codex; no separate `brew upgrade` is needed.
+
+After configuration-only edits, run just the switch command. `path:.` avoids Git
+repository ownership errors when running as root. Review and commit `flake.lock`
+after dependency updates. Restart Codex sessions after upgrading the CLI.
 
 ## Fish
 
@@ -110,12 +126,14 @@ the file you intend to use.
 
 ## Homebrew
 
-Homebrew is installed through nix-homebrew and GUI apps are managed through the
-nix-darwin Homebrew module. Managed casks and activation policy are declared in
-`nix/darwin/modules/homebrew.nix`.
+Homebrew is installed through nix-homebrew. GUI apps and selected CLI tools,
+including Codex, are declared in `nix/darwin/modules/homebrew.nix` and managed
+through the nix-darwin Homebrew module.
 
-Homebrew cleanup is set to `none`, so activation will not remove manually
-installed Homebrew packages.
+Homebrew auto-update is disabled globally and during activation: Homebrew and its
+taps are pinned in `flake.lock`. Package upgrades are enabled during activation,
+using Homebrew's normal upgrade policy. Cleanup is set to `none`, so activation
+will not remove manually installed Homebrew packages.
 
 ## Notes
 
