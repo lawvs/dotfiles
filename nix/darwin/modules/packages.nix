@@ -12,6 +12,7 @@
     nixfmt
     ripgrep
     tree
+    uv
     vim
     wget
   ];
