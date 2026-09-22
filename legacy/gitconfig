@@ -1,0 +1,35 @@
+[core]
+  editor = vim
+  quotepath = false
+[user]
+  email = 18554747+lawvs@users.noreply.github.com
+  name = lawvs
+	signingkey = /Users/whitewater/.ssh/id_rsa_github.pub
+[pager]
+  branch = false
+[pull]
+  ff = on
+[push]
+  default = simple
+  autoSetupRemote = true
+[rebase]
+  autoStash = true
+  autoSquash = true
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
+[gpg]
+	format = ssh
+
+[include]
+	path = ~/.gitconfig.local
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
