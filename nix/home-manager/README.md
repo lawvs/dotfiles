@@ -7,6 +7,7 @@ system and user configuration.
 
 Currently managed:
 
+- Claude Code
 - Git configuration
 - Fish configuration
 - Go tooling
