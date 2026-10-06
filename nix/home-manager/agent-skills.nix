@@ -1,49 +1,13 @@
 { inputs, lib, ... }:
 let
-  # Keep the selection explicit: updating the upstream lock must not install
-  # newly added or experimental skills without a corresponding config change.
-  mattSkills = [
-    "ask-matt"
-    "code-review"
-    "codebase-design"
-    "diagnosing-bugs"
-    "domain-modeling"
-    "grill-me"
-    "grill-with-docs"
-    "grilling"
-    "handoff"
-    "implement"
-    "improve-codebase-architecture"
-    "prototype"
-    "research"
-    "setup-matt-pocock-skills"
-    "tdd"
-    "teach"
-    "to-questionnaire"
-    "to-spec"
-    "to-tickets"
-    "triage"
-    "wait-what"
-    "wayfinder"
-    "wizard"
-    "writing-for-agents"
-  ];
-
   mattRoot = inputs.matt-skills;
-  mattSkillDirs = map builtins.dirOf (
-    lib.filter (path: builtins.baseNameOf path == "SKILL.md" && !(lib.hasInfix "/deprecated/" path)) (
-      lib.filesystem.listFilesRecursive mattRoot
-    )
-  );
-  mattSource =
-    name:
-    let
-      matches = lib.filter (path: builtins.baseNameOf path == name) mattSkillDirs;
-    in
-    if builtins.length matches == 1 then
-      builtins.head matches
-    else
-      throw "Expected exactly one active Matt skill named ${name}, found ${toString (builtins.length matches)}";
+  mattPlugin = builtins.fromJSON (builtins.readFile (mattRoot + "/.claude-plugin/plugin.json"));
+  mattSkillPaths = mattPlugin.skills or (throw "Matt's plugin manifest has no skills list");
+  mattPathsValid =
+    builtins.isList mattSkillPaths
+    && lib.all (
+      path: builtins.isString path && lib.hasPrefix "./" path && !(lib.hasInfix ".." path)
+    ) mattSkillPaths;
 
   ownSkillsRoot = ./skills;
   ownSkills = builtins.attrNames (
@@ -52,10 +16,12 @@ let
     ) (builtins.readDir ownSkillsRoot)
   );
 
-  upstream = map (name: {
-    inherit name;
-    source = mattSource name;
-  }) mattSkills;
+  upstream =
+    assert lib.assertMsg mattPathsValid "Matt's plugin manifest has invalid skill paths";
+    map (relativePath: {
+      name = builtins.baseNameOf relativePath;
+      source = mattRoot + "/${lib.removePrefix "./" relativePath}";
+    }) mattSkillPaths;
   personal = map (name: {
     inherit name;
     source = ownSkillsRoot + "/${name}";
