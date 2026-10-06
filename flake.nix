@@ -25,6 +25,11 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+
+    matt-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
   };
 
   outputs =

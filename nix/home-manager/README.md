@@ -7,6 +7,7 @@ system and user configuration.
 
 Currently managed:
 
+- Agent skills for Codex and Claude Code
 - Claude Code
 - Git configuration
 - Fish configuration
