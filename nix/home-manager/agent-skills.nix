@@ -1,19 +1,22 @@
 { inputs, lib, ... }:
 let
   matt = inputs.matt-skills;
-  published = (builtins.fromJSON (builtins.readFile (matt + "/.claude-plugin/plugin.json"))).skills;
-  personal = lib.filterAttrs (
+  mattSkillPaths =
+    (builtins.fromJSON (builtins.readFile (matt + "/.claude-plugin/plugin.json"))).skills;
+  mattSkills = map (path: {
+    name = builtins.baseNameOf path;
+    source = matt + "/${lib.removePrefix "./" path}";
+  }) mattSkillPaths;
+
+  personalSkillDirs = lib.filterAttrs (
     name: kind: kind == "directory" && builtins.pathExists (./skills + "/${name}/SKILL.md")
   ) (builtins.readDir ./skills);
-  skills =
-    map (path: {
-      name = builtins.baseNameOf path;
-      source = matt + "/${lib.removePrefix "./" path}";
-    }) published
-    ++ lib.mapAttrsToList (name: _: {
-      inherit name;
-      source = ./skills + "/${name}";
-    }) personal;
+  personalSkills = lib.mapAttrsToList (name: _: {
+    inherit name;
+    source = ./skills + "/${name}";
+  }) personalSkillDirs;
+
+  skills = mattSkills ++ personalSkills;
   names = map (skill: skill.name) skills;
 in
 {
