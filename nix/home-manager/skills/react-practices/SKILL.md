@@ -20,7 +20,7 @@ Apply this skill to React work by starting from render purity and data flow. Fav
 - Only use `useRef` when involving DOM manipulation, imperative integration, or mutable values that must not trigger re-renders.
 - Do not ignore or disable the ESLint `exhaustive-deps` rule. If dependencies are awkward, change the structure instead of silencing the lint rule.
 - Prefer `useSyncExternalStore` when reading from mutable external state instead of hand-rolled subscription effects.
-- Reach for memoization only after identifying a real render or identity problem. Do not add `useMemo` or `useCallback` by default.
+- Accept repeated renders when rendering is pure and performance is acceptable. Reach for memoization only after identifying a real render or identity problem; do not add `memo`, `useMemo`, or `useCallback` by default.
 
 ## Component Design Checklist
 
