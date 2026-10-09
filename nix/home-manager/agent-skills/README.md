@@ -1,7 +1,8 @@
 # Agent skills
 
-`skills.json` follows [antfu's source format](https://github.com/antfu/skills-pack/blob/main/meta.ts):
-an array of `source`, `category`, and optional `skills` (omitted means all).
+`skills.json` mirrors the `skills` array in [antfu's package.json](https://github.com/antfu/skills-pack/blob/main/package.json):
+source strings select all skills; objects use `source` and optional `skills`.
+Omitted or empty `skills` means all. No `category` metadata is needed.
 Sources use `owner/repo[/subpath]`; map each repo to a non-flake input in `default.nix`.
 Add repository skills as `skills/<name>/SKILL.md`, with no registration.
 

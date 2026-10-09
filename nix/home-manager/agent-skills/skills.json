@@ -1,7 +1,6 @@
 [
   {
     "source": "mattpocock/skills",
-    "category": "Workflow",
     "skills": [
       "ask-matt",
       "diagnosing-bugs",
@@ -32,12 +31,6 @@
       "writing-for-agents"
     ]
   },
-  {
-    "source": "AminBlg/SimpleEnglish",
-    "category": "Writing"
-  },
-  {
-    "source": "ayghri/i-have-adhd",
-    "category": "Writing"
-  }
+  "AminBlg/SimpleEnglish",
+  "ayghri/i-have-adhd"
 ]

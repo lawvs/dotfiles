@@ -41,8 +41,9 @@ let
       }
     ) files;
   skillsFromSource =
-    source:
+    entry:
     let
+      source = if builtins.isString entry then { source = entry; } else entry;
       parts = lib.splitString "/" source.source;
       repo = lib.concatStringsSep "/" (lib.take 2 parts);
       subpath = lib.concatStringsSep "/" (lib.drop 2 parts);
@@ -51,7 +52,7 @@ let
     in
     assert lib.assertMsg (builtins.hasAttr repo sourceInputs) "No flake input for ${repo}";
     assert lib.assertMsg (available != [ ]) "No skills found in ${source.source}";
-    if source ? skills then
+    if source ? skills && source.skills != [ ] then
       map (
         name:
         let
