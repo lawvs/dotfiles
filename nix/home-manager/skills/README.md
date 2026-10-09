@@ -1,6 +1,6 @@
 # Agent skills
 
-Select upstream skills in `../skills.json`, grouped by flake `input` and
+Select upstream skills in `skills.json`, grouped by flake `input` and
 `category`. Only names listed in `skills` are installed. Paths come from the
 upstream `.claude-plugin/plugin.json`, or default to `skills/<name>`.
 
