@@ -28,19 +28,17 @@ let
       let
         header = lib.splitString "\n" (builtins.head (lib.splitString "\n---" (builtins.readFile file)));
         nameLine = lib.findFirst (line: lib.hasPrefix "name:" line) "" header;
-        match = builtins.match ''name:[[:blank:]]*["']?([^"'[:space:]]+)["']?[[:space:]]*'' nameLine;
-        name = if match == null then "" else builtins.head match;
+        match = builtins.match ''name:[[:blank:]]*["']?([a-zA-Z0-9][a-zA-Z0-9._:-]*)["']?[[:space:]]*'' nameLine;
       in
       assert lib.assertMsg (
-        lib.removeSuffix "\r" (builtins.head header) == "---"
-        && builtins.match "[a-zA-Z0-9][a-zA-Z0-9._:-]*" name != null
+        lib.removeSuffix "\r" (builtins.head header) == "---" && match != null
       ) "Missing or invalid skill name in ${file}";
       {
-        inherit name;
+        name = builtins.head match;
         source = builtins.dirOf file;
       }
     ) files;
-  skillsFromSource =
+  remoteSkills = lib.concatMap (
     entry:
     let
       source = if builtins.isString entry then { source = entry; } else entry;
@@ -50,7 +48,6 @@ let
       root = toString sourceInputs.${repo} + lib.optionalString (subpath != "") "/${subpath}";
       available = discoverSkills root;
     in
-    assert lib.assertMsg (builtins.hasAttr repo sourceInputs) "No flake input for ${repo}";
     assert lib.assertMsg (available != [ ]) "No skills found in ${source.source}";
     if source ? skills && source.skills != [ ] then
       map (
@@ -64,9 +61,8 @@ let
         skill
       ) source.skills
     else
-      available;
-
-  remoteSkills = lib.concatMap skillsFromSource manifest;
+      available
+  ) manifest;
 
   localSkillDirs = lib.filterAttrs (
     name: kind: kind == "directory" && builtins.pathExists (./skills + "/${name}/SKILL.md")
@@ -84,21 +80,13 @@ in
     assert lib.assertMsg (
       builtins.length names == builtins.length (lib.unique names)
     ) "Duplicate agent skill names";
-    assert lib.assertMsg (lib.all (
-      skill: builtins.pathExists (skill.source + "/SKILL.md")
-    ) skills) "Agent skill is missing its SKILL.md";
     builtins.listToAttrs (
       lib.concatMap (
         skill:
-        map
-          (target: {
-            name = "${target}/${skill.name}";
-            value.source = skill.source;
-          })
-          [
-            ".agents/skills"
-            ".claude/skills"
-          ]
+        map (target: lib.nameValuePair "${target}/${skill.name}" { source = skill.source; }) [
+          ".agents/skills"
+          ".claude/skills"
+        ]
       ) skills
     );
 }
