@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   username,
   ...
 }:
@@ -45,4 +46,16 @@
       "resilio-sync"
     ];
   };
+
+  system.activationScripts.homebrew.text = lib.mkAfter ''
+    sudo -H -u ${lib.escapeShellArg username} /bin/sh -c '
+      for browser in "$HOME"/.agent-browser/browsers/chrome-*/"Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"; do
+        if [ -x "$browser" ]; then
+          exit 0
+        fi
+      done
+
+      "${config.homebrew.prefix}/bin/agent-browser" install
+    '
+  '';
 }
