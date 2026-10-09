@@ -6,11 +6,9 @@ let
     let
       root = inputs.${source.input};
       pluginFile = root + "/.claude-plugin/plugin.json";
-      paths =
-        if builtins.pathExists pluginFile then
-          (builtins.fromJSON (builtins.readFile pluginFile)).skills
-        else
-          map (name: "./skills/${name}") source.skills;
+      plugin =
+        if builtins.pathExists pluginFile then builtins.fromJSON (builtins.readFile pluginFile) else { };
+      paths = plugin.skills or (map (name: "./skills/${name}") source.skills);
     in
     map (
       name:

@@ -30,6 +30,16 @@
       url = "github:mattpocock/skills";
       flake = false;
     };
+
+    simple-english-skills = {
+      url = "github:AminBlg/SimpleEnglish";
+      flake = false;
+    };
+
+    adhd-skills = {
+      url = "github:ayghri/i-have-adhd";
+      flake = false;
+    };
   };
 
   outputs =

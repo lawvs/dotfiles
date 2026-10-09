@@ -3,6 +3,7 @@
 Select upstream skills in `skills.json`, grouped by flake `input` and
 `category`. Only names listed in `skills` are installed. Paths come from the
 upstream `.claude-plugin/plugin.json`, or default to `skills/<name>`.
+Only skill directories are installed, not plugin hooks or output styles.
 
 Invocation policies come from upstream skills. Versions are pinned in
 `flake.lock`; new sources need a flake input with `flake = false`.

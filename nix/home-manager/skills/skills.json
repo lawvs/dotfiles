@@ -32,6 +32,16 @@
         "wait-what",
         "writing-for-agents"
       ]
+    },
+    {
+      "input": "simple-english-skills",
+      "category": "Writing",
+      "skills": ["simple-english"]
+    },
+    {
+      "input": "adhd-skills",
+      "category": "Writing",
+      "skills": ["i-have-adhd"]
     }
   ]
 }
