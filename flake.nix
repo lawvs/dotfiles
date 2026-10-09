@@ -40,6 +40,11 @@
       url = "github:ayghri/i-have-adhd";
       flake = false;
     };
+
+    vercel-labs-agent-browser = {
+      url = "github:vercel-labs/agent-browser/v0.38.1";
+      flake = false;
+    };
   };
 
   outputs =

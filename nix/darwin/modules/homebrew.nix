@@ -27,6 +27,7 @@
     };
 
     brews = [
+      "agent-browser"
       "witr"
     ];
 
