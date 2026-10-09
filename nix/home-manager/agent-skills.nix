@@ -1,9 +1,4 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
-}:
+{ inputs, lib, ... }:
 let
   manifest = builtins.fromJSON (builtins.readFile ./skills.json);
   skillsFromSource =
@@ -16,11 +11,7 @@ let
           (builtins.fromJSON (builtins.readFile pluginFile)).skills
         else
           map (name: "./skills/${name}") source.skills;
-      manualOnly = source.manualOnly or [ ];
     in
-    assert lib.assertMsg (lib.all (
-      name: lib.elem name source.skills
-    ) manualOnly) "manualOnly must contain selected skills from ${source.input}";
     map (
       name:
       let
@@ -30,22 +21,10 @@ let
       {
         inherit name;
         source = root + "/${lib.removePrefix "./" path}";
-        manualOnly = lib.elem name manualOnly;
       }
     ) source.skills;
 
   remoteSkills = lib.concatMap skillsFromSource manifest.sources;
-
-  manualOnlySource =
-    skill:
-    pkgs.runCommand "agent-skill-${skill.name}" { nativeBuildInputs = [ pkgs.yq-go ]; } ''
-      mkdir -p "$out"
-      cp -R ${lib.escapeShellArg (toString skill.source)}/. "$out/"
-      chmod -R u+w "$out"
-      mkdir -p "$out/agents"
-      touch "$out/agents/openai.yaml"
-      yq -i '.policy.allow_implicit_invocation = false' "$out/agents/openai.yaml"
-    '';
 
   personalSkillDirs = lib.filterAttrs (
     name: kind: kind == "directory" && builtins.pathExists (./skills + "/${name}/SKILL.md")
@@ -72,7 +51,7 @@ in
         map
           (target: {
             name = "${target}/${skill.name}";
-            value.source = if skill.manualOnly or false then manualOnlySource skill else skill.source;
+            value.source = skill.source;
           })
           [
             ".agents/skills"
