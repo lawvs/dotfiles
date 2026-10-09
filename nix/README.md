@@ -63,10 +63,6 @@ Declare apps and CLI tools in [homebrew.nix](darwin/modules/homebrew.nix).
 Homebrew and its taps are pinned in `flake.lock`, so Homebrew auto-update is
 disabled. Activation leaves manually installed, undeclared packages in place.
 
-Activation downloads agent-browser's browser as your user if none is installed;
-existing browsers are left unchanged. Its skill is managed by the agent-skills
-manifest. Browser downloads are not pinned by `flake.lock`.
-
 ## Troubleshooting
 
 If activation reports conflicting files, back up only the reported files and

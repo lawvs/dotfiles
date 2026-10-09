@@ -199,7 +199,6 @@
       },
       "original": {
         "owner": "vercel-labs",
-        "ref": "v0.38.1",
         "repo": "agent-browser",
         "type": "github"
       }

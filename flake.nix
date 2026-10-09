@@ -42,7 +42,7 @@
     };
 
     vercel-labs-agent-browser = {
-      url = "github:vercel-labs/agent-browser/v0.38.1";
+      url = "github:vercel-labs/agent-browser";
       flake = false;
     };
   };
