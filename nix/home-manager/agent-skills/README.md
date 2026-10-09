@@ -1,7 +1,7 @@
 # Agent skills
 
 Select remote skills in `skills.json`; each source uses a `flake = false` input
-from `flake.nix`. Add local skills as `local/<name>/SKILL.md`, with no registration.
+from `flake.nix`. Add repository skills as `skills/<name>/SKILL.md`, with no registration.
 
 Home Manager links skills into `~/.agents/skills` and `~/.claude/skills`.
 Remote versions are pinned in `flake.lock`; invocation policies are preserved.

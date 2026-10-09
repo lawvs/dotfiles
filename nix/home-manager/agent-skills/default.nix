@@ -25,11 +25,11 @@ let
   remoteSkills = lib.concatMap skillsFromSource manifest.sources;
 
   localSkillDirs = lib.filterAttrs (
-    name: kind: kind == "directory" && builtins.pathExists (./local + "/${name}/SKILL.md")
-  ) (builtins.readDir ./local);
+    name: kind: kind == "directory" && builtins.pathExists (./skills + "/${name}/SKILL.md")
+  ) (builtins.readDir ./skills);
   localSkills = lib.mapAttrsToList (name: _: {
     inherit name;
-    source = ./local + "/${name}";
+    source = ./skills + "/${name}";
   }) localSkillDirs;
 
   skills = remoteSkills ++ localSkills;
