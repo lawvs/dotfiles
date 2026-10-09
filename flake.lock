@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "AminBlg-SimpleEnglish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791214717,
+        "narHash": "sha256-p1ffLp/3Yg1yBfCikBwua3ieVBCNyZfTZH6GBAxNREA=",
+        "owner": "AminBlg",
+        "repo": "SimpleEnglish",
+        "rev": "a6fcb4fde098b33617cc1578d151ebf58774b883",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AminBlg",
+        "repo": "SimpleEnglish",
+        "type": "github"
+      }
+    },
     "ayghri-i-have-adhd": {
       "flake": false,
       "locked": {
@@ -159,6 +175,7 @@
     },
     "root": {
       "inputs": {
+        "AminBlg-SimpleEnglish": "AminBlg-SimpleEnglish",
         "ayghri-i-have-adhd": "ayghri-i-have-adhd",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
@@ -167,22 +184,22 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "AminBlg-SimpleEnglish": "AminBlg-SimpleEnglish"
+        "vercel-labs-agent-browser": "vercel-labs-agent-browser"
       }
     },
-    "AminBlg-SimpleEnglish": {
+    "vercel-labs-agent-browser": {
       "flake": false,
       "locked": {
-        "lastModified": 1791214717,
-        "narHash": "sha256-p1ffLp/3Yg1yBfCikBwua3ieVBCNyZfTZH6GBAxNREA=",
-        "owner": "AminBlg",
-        "repo": "SimpleEnglish",
-        "rev": "a6fcb4fde098b33617cc1578d151ebf58774b883",
+        "lastModified": 1789588264,
+        "narHash": "sha256-C+XplCHOdFDQGPUnrCDuq7U4LkAX0QB3fC4uVA8o11w=",
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
+        "rev": "aff6125c023b810ea3f2e5deec5379e9a4270bdc",
         "type": "github"
       },
       "original": {
-        "owner": "AminBlg",
-        "repo": "SimpleEnglish",
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
         "type": "github"
       }
     }

@@ -32,5 +32,6 @@
     ]
   },
   "AminBlg/SimpleEnglish",
-  "ayghri/i-have-adhd"
+  "ayghri/i-have-adhd",
+  "vercel-labs/agent-browser/skills/agent-browser"
 ]
