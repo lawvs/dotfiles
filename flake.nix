@@ -26,17 +26,17 @@
       flake = false;
     };
 
-    matt-skills = {
+    mattpocock-skills = {
       url = "github:mattpocock/skills";
       flake = false;
     };
 
-    simple-english-skills = {
+    AminBlg-SimpleEnglish = {
       url = "github:AminBlg/SimpleEnglish";
       flake = false;
     };
 
-    adhd-skills = {
+    ayghri-i-have-adhd = {
       url = "github:ayghri/i-have-adhd";
       flake = false;
     };

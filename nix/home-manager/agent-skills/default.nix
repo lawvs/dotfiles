@@ -1,11 +1,6 @@
 { inputs, lib, ... }:
 let
   manifest = builtins.fromJSON (builtins.readFile ./skills.json);
-  sourceInputs = {
-    "mattpocock/skills" = inputs.matt-skills;
-    "AminBlg/SimpleEnglish" = inputs.simple-english-skills;
-    "ayghri/i-have-adhd" = inputs.adhd-skills;
-  };
   discoverSkills =
     root:
     let
@@ -45,7 +40,9 @@ let
       parts = lib.splitString "/" source.source;
       repo = lib.concatStringsSep "/" (lib.take 2 parts);
       subpath = lib.concatStringsSep "/" (lib.drop 2 parts);
-      root = toString sourceInputs.${repo} + lib.optionalString (subpath != "") "/${subpath}";
+      root =
+        toString inputs.${lib.replaceStrings [ "/" ] [ "-" ] repo}
+        + lib.optionalString (subpath != "") "/${subpath}";
       available = discoverSkills root;
     in
     assert lib.assertMsg (available != [ ]) "No skills found in ${source.source}";

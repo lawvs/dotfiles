@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "adhd-skills": {
+    "ayghri-i-have-adhd": {
       "flake": false,
       "locked": {
         "lastModified": 1791329026,
@@ -86,7 +86,7 @@
         "type": "github"
       }
     },
-    "matt-skills": {
+    "mattpocock-skills": {
       "flake": false,
       "locked": {
         "lastModified": 1791199038,
@@ -159,18 +159,18 @@
     },
     "root": {
       "inputs": {
-        "adhd-skills": "adhd-skills",
+        "ayghri-i-have-adhd": "ayghri-i-have-adhd",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "matt-skills": "matt-skills",
+        "mattpocock-skills": "mattpocock-skills",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "simple-english-skills": "simple-english-skills"
+        "AminBlg-SimpleEnglish": "AminBlg-SimpleEnglish"
       }
     },
-    "simple-english-skills": {
+    "AminBlg-SimpleEnglish": {
       "flake": false,
       "locked": {
         "lastModified": 1791214717,
