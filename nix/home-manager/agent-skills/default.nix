@@ -1,0 +1,89 @@
+{ inputs, lib, ... }:
+let
+  manifest = builtins.fromJSON (builtins.readFile ./skills.json);
+  discoverSkills =
+    root:
+    let
+      files =
+        if builtins.pathExists (root + "/SKILL.md") then
+          [ (root + "/SKILL.md") ]
+        else
+          lib.filter (
+            file:
+            let
+              path = lib.removePrefix "${root}/" (toString file);
+              depth = builtins.length (lib.splitString "/" path);
+            in
+            builtins.baseNameOf file == "SKILL.md"
+            && (depth == 2 || (lib.hasPrefix "skills/" path && depth <= 5))
+          ) (lib.filesystem.listFilesRecursive root);
+    in
+    map (
+      file:
+      let
+        header = lib.splitString "\n" (builtins.head (lib.splitString "\n---" (builtins.readFile file)));
+        nameLine = lib.findFirst (line: lib.hasPrefix "name:" line) "" header;
+        match = builtins.match ''name:[[:blank:]]*["']?([a-zA-Z0-9][a-zA-Z0-9._:-]*)["']?[[:space:]]*'' nameLine;
+      in
+      assert lib.assertMsg (
+        lib.removeSuffix "\r" (builtins.head header) == "---" && match != null
+      ) "Missing or invalid skill name in ${file}";
+      {
+        name = builtins.head match;
+        source = builtins.dirOf file;
+      }
+    ) files;
+  remoteSkills = lib.concatMap (
+    entry:
+    let
+      source = if builtins.isString entry then { source = entry; } else entry;
+      parts = lib.splitString "/" source.source;
+      repo = lib.concatStringsSep "/" (lib.take 2 parts);
+      subpath = lib.concatStringsSep "/" (lib.drop 2 parts);
+      root =
+        toString inputs.${lib.replaceStrings [ "/" ] [ "-" ] repo}
+        + lib.optionalString (subpath != "") "/${subpath}";
+      available = discoverSkills root;
+    in
+    assert lib.assertMsg (available != [ ]) "No skills found in ${source.source}";
+    if source ? skills && source.skills != [ ] then
+      map (
+        name:
+        let
+          skill = lib.findFirst (
+            skill: skill.name == name || builtins.baseNameOf skill.source == name
+          ) null available;
+        in
+        assert lib.assertMsg (skill != null) "Unknown skill ${name} in ${source.source}";
+        skill
+      ) source.skills
+    else
+      available
+  ) manifest;
+
+  localSkillDirs = lib.filterAttrs (
+    name: kind: kind == "directory" && builtins.pathExists (./skills + "/${name}/SKILL.md")
+  ) (builtins.readDir ./skills);
+  localSkills = lib.mapAttrsToList (name: _: {
+    inherit name;
+    source = ./skills + "/${name}";
+  }) localSkillDirs;
+
+  skills = remoteSkills ++ localSkills;
+  names = map (skill: skill.name) skills;
+in
+{
+  home.file =
+    assert lib.assertMsg (
+      builtins.length names == builtins.length (lib.unique names)
+    ) "Duplicate agent skill names";
+    builtins.listToAttrs (
+      lib.concatMap (
+        skill:
+        map (target: lib.nameValuePair "${target}/${skill.name}" { source = skill.source; }) [
+          ".agents/skills"
+          ".claude/skills"
+        ]
+      ) skills
+    );
+}

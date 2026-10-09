@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./agent-skills.nix
+    ./agent-skills
     ./claude-code.nix
     ./fish.nix
     ./git.nix

@@ -26,8 +26,18 @@
       flake = false;
     };
 
-    matt-skills = {
+    mattpocock-skills = {
       url = "github:mattpocock/skills";
+      flake = false;
+    };
+
+    AminBlg-SimpleEnglish = {
+      url = "github:AminBlg/SimpleEnglish";
+      flake = false;
+    };
+
+    ayghri-i-have-adhd = {
+      url = "github:ayghri/i-have-adhd";
       flake = false;
     };
   };

@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "ayghri-i-have-adhd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791329026,
+        "narHash": "sha256-5EYLKtrg0RQN0CHR51Sc2qSkgYklu6lqzuH87Dp3gv4=",
+        "owner": "ayghri",
+        "repo": "i-have-adhd",
+        "rev": "723af7d9afaf43eb871dbcce6129e2bf80de90d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ayghri",
+        "repo": "i-have-adhd",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -70,7 +86,7 @@
         "type": "github"
       }
     },
-    "matt-skills": {
+    "mattpocock-skills": {
       "flake": false,
       "locked": {
         "lastModified": 1791199038,
@@ -143,13 +159,31 @@
     },
     "root": {
       "inputs": {
+        "ayghri-i-have-adhd": "ayghri-i-have-adhd",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "matt-skills": "matt-skills",
+        "mattpocock-skills": "mattpocock-skills",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "AminBlg-SimpleEnglish": "AminBlg-SimpleEnglish"
+      }
+    },
+    "AminBlg-SimpleEnglish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791214717,
+        "narHash": "sha256-p1ffLp/3Yg1yBfCikBwua3ieVBCNyZfTZH6GBAxNREA=",
+        "owner": "AminBlg",
+        "repo": "SimpleEnglish",
+        "rev": "a6fcb4fde098b33617cc1578d151ebf58774b883",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AminBlg",
+        "repo": "SimpleEnglish",
+        "type": "github"
       }
     }
   },
