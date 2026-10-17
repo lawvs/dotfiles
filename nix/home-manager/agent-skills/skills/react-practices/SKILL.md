@@ -18,6 +18,7 @@ Apply this skill to React work by starting from render purity and data flow. Fav
 - Avoid using `useEffect` if possible. Keep an effect only when synchronizing React with an external system such as subscriptions, timers, network lifecycle, imperative browser APIs, or non-React widgets.
 - Keep user-triggered logic in event handlers rather than effects.
 - Only use `useRef` when involving DOM manipulation, imperative integration, or mutable values that must not trigger re-renders.
+- Do not use `useImperativeHandle`. If the requirement cannot be implemented without it, stop and ask for confirmation.
 - Do not ignore or disable the ESLint `exhaustive-deps` rule. If dependencies are awkward, change the structure instead of silencing the lint rule.
 - Prefer `useSyncExternalStore` when reading from mutable external state instead of hand-rolled subscription effects.
 - Accept repeated renders when rendering is pure and performance is acceptable. Reach for memoization only after identifying a real render or identity problem; do not add `memo`, `useMemo`, or `useCallback` by default.
