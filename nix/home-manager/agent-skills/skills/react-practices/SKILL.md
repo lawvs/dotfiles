@@ -21,6 +21,7 @@ Apply this skill to React work by starting from render purity and data flow. Fav
 - Do not use `useImperativeHandle`. If the requirement cannot be implemented without it, stop and ask for confirmation.
 - Do not ignore or disable the ESLint `exhaustive-deps` rule. If dependencies are awkward, change the structure instead of silencing the lint rule.
 - Prefer `useSyncExternalStore` when reading from mutable external state instead of hand-rolled subscription effects.
+- Encapsulate `useSyncExternalStore` in a custom hook to prevent abstraction leaks.
 - Accept repeated renders when rendering is pure and performance is acceptable. Reach for memoization only after identifying a real render or identity problem; do not add `memo`, `useMemo`, or `useCallback` by default.
 
 ## Component Design Checklist
