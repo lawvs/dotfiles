@@ -1,0 +1,43 @@
+name: Update flake.lock
+
+on:
+  schedule:
+    - cron: '17 1 * * 1' # Monday 09:17 Asia/Singapore
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Update flake.lock
+        run: nix flake update
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          add-paths: flake.lock
+          branch: automation/update-flake-lock
+          commit-message: 'build: update flake.lock'
+          title: 'build: update flake.lock'
+          body: |
+            ## Summary
+
+            `flake.nix` inputs → updated `flake.lock` pins.
+
+            ## Evidence
+
+            - **Before:** Previous pinned inputs.
+              **After:** `nix flake update` completed in GitHub Actions.
+
+            ## Merge Danger
+
+            **Door:** two-way
+
+            **Blast Radius:** dependencies
+
+            Review the lockfile diff before merging. This Linux job does not build the macOS configuration.
