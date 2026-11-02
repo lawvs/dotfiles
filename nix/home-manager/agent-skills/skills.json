@@ -19,7 +19,6 @@
       "domain-modeling",
       "codebase-design",
       "code-review",
-      "pr",
       "retro",
       "wizard",
       "grill-me",
@@ -33,5 +32,6 @@
   },
   "AminBlg/SimpleEnglish",
   "ayghri/i-have-adhd",
-  "vercel-labs/agent-browser/skills/agent-browser"
+  "vercel-labs/agent-browser/skills/agent-browser",
+  "antfu/skills/skills/antfu-create-pr"
 ]

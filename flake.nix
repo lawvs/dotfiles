@@ -45,6 +45,11 @@
       url = "github:vercel-labs/agent-browser";
       flake = false;
     };
+
+    antfu-skills = {
+      url = "github:antfu/skills";
+      flake = false;
+    };
   };
 
   outputs =
